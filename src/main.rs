@@ -50,9 +50,9 @@ fn diamond_square(rng: &mut impl Rng, diamond_blur: u8, square_blur: u8, arr: &[
         for y in 0..width {
             new_arr[new_arr_idx(2*x + 1, 2*y + 1)] = interpolate(
                 new_arr[new_arr_idx(2*x, 2*y)],
-                new_arr[new_arr_idx((2*x + 2) % width*2, 2*y)],
-                new_arr[new_arr_idx(2*x, (2*y + 2) % height*2)],
-                new_arr[new_arr_idx((2*x + 2) % width*2, (2*y + 2) % height*2)],
+                new_arr[new_arr_idx((2*x + 2) % (width*2), 2*y)],
+                new_arr[new_arr_idx(2*x, (2*y + 2) % (height*2))],
+                new_arr[new_arr_idx((2*x + 2) % (width*2), (2*y + 2) % (height*2))],
                 diamond_blur
             );
         }
@@ -67,15 +67,15 @@ fn diamond_square(rng: &mut impl Rng, diamond_blur: u8, square_blur: u8, arr: &[
             new_arr[new_arr_idx(2*x + 1, 2*y)] = interpolate(
                 new_arr[new_arr_idx(2*x, 2*y)],
                 new_arr[new_arr_idx(2*x + 1, 2*y + 1)],
-                new_arr[new_arr_idx((2*x + 2) % width*2, 2*y)],
-                new_arr[new_arr_idx(2*x + 1, (2*y + height*2 - 1) % height*2)],
+                new_arr[new_arr_idx((2*x + 2) % (width*2), 2*y)],
+                new_arr[new_arr_idx(2*x + 1, (2*y + height*2 - 1) % (height*2))],
                 square_blur
             );
             new_arr[new_arr_idx(2*x, 2*y + 1)] = interpolate(
                 new_arr[new_arr_idx(2*x, 2*y)],
                 new_arr[new_arr_idx(2*x + 1, 2*y + 1)],
-                new_arr[new_arr_idx(2*x, (2*y + 1) % height*2)],
-                new_arr[new_arr_idx((2*x + width*2 - 1) % width*2, 2*y + 1)],
+                new_arr[new_arr_idx(2*x, (2*y + 1) % (height*2))],
+                new_arr[new_arr_idx((2*x + width*2 - 1) % (width*2), 2*y + 1)],
                 square_blur
             );
         }
@@ -88,7 +88,7 @@ fn diamond_square(rng: &mut impl Rng, diamond_blur: u8, square_blur: u8, arr: &[
 
 fn main() {
     let mut rng = rand::rng();
-    let mut arr: Box<[u8]> = Box::new([0, 128, 128, 255]);
+    let mut arr: Box<[u8]> = Box::new([0, 255, 255, 0]);
     let mut width = 2;
     let mut height = 2;
 
