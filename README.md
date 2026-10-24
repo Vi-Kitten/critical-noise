@@ -1,6 +1,6 @@
 **An adjustable fractal noise function using a modification of the diamond-square algorithm.**
 
-[example](./noise.bmp)
+![example](./noise.png)
 
 Sharpness can be exponentially decayed to smoothly clamp the frequencies in the final texture.
 

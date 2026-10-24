@@ -140,13 +140,13 @@ fn main() {
     let sharpness = |t: f64| { f64::exp(-t*0.25) };
     
     for _ in 0..4 {
-        arr = diamond_square(&mut rng, 1.0, 1.0, &*arr, width, height);
+        arr = diamond_square(&mut rng, 1.0, 1.0, &arr, width, height);
         width *= 2;
         height *= 2;
     }
     
     for t in 0..4 {
-        arr = diamond_square(&mut rng, sharpness((t*2) as f64), sharpness((t*2 + 1) as f64), &*arr, width, height);
+        arr = diamond_square(&mut rng, sharpness((t*2) as f64), sharpness((t*2 + 1) as f64), &arr, width, height);
         width *= 2;
         height *= 2;
     }
@@ -158,5 +158,5 @@ fn main() {
         }
     }
 
-    img.save("noise.bmp").expect("compatible format");
+    img.save("noise.png").expect("compatible format");
 }
